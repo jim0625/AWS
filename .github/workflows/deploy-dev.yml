@@ -8,7 +8,6 @@ on:
 jobs:
   deploy:
     runs-on: self-hosted
-      
     steps:
       - name: install ssh keys
         # check this thread to understand why its needed:
@@ -16,8 +15,8 @@ jobs:
         run: |
           install -m 600 -D /dev/null ~/.ssh/id_rsa
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-          ssh-keyscan -H ${{ secrets.SSH_HOST }}> ~/.ssh/known_hosts
+          ssh-keyscan -H ${{ secrets.SSH_HOST }} > ~/.ssh/known_hosts
       - name: connect and pull
-        run: ssh ubuntu@34.231.112.126 "cd AWS &&  git pull && docker compose down && docker compose up -d && exit"
+        run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd ${{ secrets.WORK_DIR }}  && git pull && docker compose down -v && docker compose up -d && exit"
       - name: cleanup
         run: rm -rf ~/.ssh
