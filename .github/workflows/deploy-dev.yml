@@ -7,8 +7,8 @@ on:
       - closed
 jobs:
   deploy:
-    runs-on:
-      group: deploy
+    runs-on: self-hosted
+      
     steps:
       - name: install ssh keys
         # check this thread to understand why its needed:
