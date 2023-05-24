@@ -4,7 +4,7 @@ const ConnectWalletButton = ({ connectWallet }) => (
     // Add an onClick functionality
     onClick={connectWallet}
   >
-    connect wallet
+    連結錢包
   </button>
 );
 
