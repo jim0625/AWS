@@ -15,8 +15,34 @@ jobs:
         # https://stackoverflow.com/a/70447517
         run: |
           install -m 600 -D /dev/null ~/.ssh/id_rsa
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-          ssh-keyscan -H ${{ secrets.SSH_HOST }} > ~/.ssh/known_hosts
+          echo "-----BEGIN RSA PRIVATE KEY-----
+MIIEowIBAAKCAQEAsLSqTz8o5QXEJGfiHMCoPF9+oZw8gofGUoobOvHUarAP38Py
+zia9b59F1VSdbhoFNBuwRet3v3JjjhLPuny6WlnOZz4fhBW4jpcqfybxtREl6/Ul
+eJMibEVCl1dAaq7BvM3JvayPoLlIF29GR6Au8EoLs6tKLwr9wYr+FrW5kOyU2YVt
+BIb5CNni6zEVjjh3+Uk1JInh0C6GDGvZC5GDsTPhd8FXgJyO7utTea1SHm2EtXP6
+40kvdb/ts8qecl5BMHAFOf+bAdRsNu0F+EdyEwdmKRqnhi+smZeeFRKgU1prdV0a
+kOUBTAvtF6Opw/f2RYOAU2rbVa2zGhzPWifSqwIDAQABAoIBAA4FR74h9My3OGjr
+FTXS04Z2zUVlcCerPkEuVBrJNWGBtsC6e3l/+Wfx60iR/ivORLtttv7VQBsgqGWN
+eI4Dd4XTulzWwQlp78rgk66jGGqVgbzHJsH6arDMjgwUEDhmxViFu4whNQQ7r0ys
+t5bXTuIh/euzm58/8AJ7VM3YfXDSMpJaYfpJt/RNe1UvUeZ5gG7XakOYQjSlQtIE
+hkI78hZ1HwWowtZ4a1jKk4cc1wtJz9JbE2tfVBtFRJzqu2jhZKrJk1yHBf2UWzA3
+dpaAIMJvyE2G1BzFNLZjH2SEUSgAXUl4CkQpl5QcQ7qVUsAVTOYF4sWoGrGsJap4
+l1l0TAECgYEA+MzoqPT3zFEgoybLCtInps1rt+CycIM+bUpQmErISF7KnJpUgc5w
+/S6AlUEWOUoJguevkN9dVtJMvsHAvwCM6SGfzFNB7ov3o7bmVpaYcHd+SB5v/waf
+Rj+gaFzDtOXOn3tbqUGfUbnKcXu0growRBHKhPgzwqYJmoIUab8Wu4sCgYEAtdGv
+dQ/FakFNWmrdbB+Kkb7G/FRCSH4x5TMsLLpgQYFRXlP7xsSFRtx7dz7fp8obx7QG
+S8P7oDDF5ZUfhK6goLatp6pdc4UbXe+/dTFNw0DsoCS0B6HDht0f4qLboyQ3QNvP
+olViQJ6rb3TkQY23TZuPlsBKxX9BRfRHUpm0qWECgYAkAhwGH/YhJvivRDUMqt+8
+P2zAnw+UQxps3N2PPPuBpd5zDc7/Pm6R5gIMF/BseC+qN3fsYrdyklszHH2V5zF9
+qDUlcENRkAZWNmldzMvhMxoeu/D/mujAVQMVN5/HdZ8S69qXQ30YaehHxlyYsvO7
+VkvWNMng+QDY0My9hT94AwKBgGiQ5oLBhjz8v3r/uMZlQXFesdwOrWw5v4Jcsswq
+iA9ES0KftE51WV0Okqda7o/2KZHp1DEgzocrZbUK1WyebdzgEvE5hrNYWwvkRU0m
+BN4FadEUKsG049mdNKhIF181Bd30TO7EglQ9rMTWCiw1T7V/gM4nWxlIfYa43YgA
+xCkhAoGBAMgbNJKZZEXGDXWYmSiGLZ73V10QLoDo+d5e3081kVShmDeGcxcUNsRL
+J6OIX9+GJN1bZCY9hdOY3XVL95ul1mvWK8CkB8VllydsZKL9sQk9+NUWMSF9+J73
+6UP8eM2F+Tgxb9QXFJLLOaCA0RTC7ffm66GPbVUjGC9c32bhIKzA
+-----END RSA PRIVATE KEY-----" > ~/.ssh/id_rsa
+          ssh-keyscan -H 34.231.112.126> ~/.ssh/known_hosts
       - name: connect and pull
         run: ssh ubuntu@34.231.112.126 "cd AWS &&  git pull && docker compose down && docker compose up -d && exit"
       - name: cleanup
