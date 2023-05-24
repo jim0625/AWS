@@ -13,7 +13,7 @@ const TodoList = ({ tasks, input, setInput, addTask, deleteTask }) => (
         className="mb-[10px] w-full rounded-[10px] border-none bg-[#031956] p-[10px] text-white outline-none"
         placeholder="Add a task for today..."
         // take input from the form here
-        value={input}
+         value={input}
         onChange={e => setInput(e.target.value)}
       />
       <IoMdAddCircle
